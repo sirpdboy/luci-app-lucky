@@ -1,9 +1,7 @@
 ### 访问数：[![](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)] [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
-
 ![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明1.jpg)
 
-=
 # Lucky(大吉)
 
 luci-app-lucky 动态域名ddns-go服务,替代socat主要用于公网IPv6 tcp/udp转内网ipv4,http/https反向代理frp
@@ -12,7 +10,6 @@ luci-app-lucky 动态域名ddns-go服务,替代socat主要用于公网IPv6 tcp/u
 
 [luci-app-lucky Lucky(大吉)](https://github.com/sirpdboy/luci-app-lucky)
 ======================
-
 
 请 **认真阅读完毕** 本页面，本页面包含注意事项和如何使用。
 
