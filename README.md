@@ -1,6 +1,8 @@
 ### 访问数：[![](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)] [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
-欢迎来到sirpdboy的源码仓库！
+
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明1.jpg)
+
 =
 # Lucky(大吉)
 
@@ -121,7 +123,8 @@ luci-app-lucky 动态域名ddns-go服务,替代socat主要用于公网IPv6 tcp/u
  - 如果需要使用白名单模式,请根据自身需求打开外网访问后台管理页面开关.
  - 转发规则启用异常,端口转发没有生效时请登录后台查看日志.
  - 开启外网访问可以直接修改配置文件中的"AllowInternetaccess": false, 将false改为true
-
+ 
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明2.jpg)
 
 ## 界面
 
@@ -152,11 +155,7 @@ DDNS-GO动态域名: https://github.com/sirpdboy/luci-app-DDNS-GO
 
 Lucky(大吉): https://github.com/sirpdboy/luci-app-lucky 
 
-
-## 捐助
-
--如果你觉得此项目对你有帮助，请捐助我们，以使项目能持续发展，更加完善。··请作者喝杯咖啡~~~**
--你们的支持就是我的动力！**
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明3.jpg)
 
 |     <img src="https://img.shields.io/badge/-支付宝-F5F5F5.svg" href="#赞助支持本项目-" height="25" alt="图飞了😂"/>  |  <img src="https://img.shields.io/badge/-微信-F5F5F5.svg" height="25" alt="图飞了😂" href="#赞助支持本项目-"/>  | 
 | :-----------------: | :-------------: |
