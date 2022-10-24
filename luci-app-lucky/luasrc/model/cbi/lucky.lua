@@ -2,7 +2,9 @@
 
 local m, s ,o
 
-local m = Map("lucky", translate("Lucky"), translate("Main functions of Lucky: dynamic domain name ddns-go service, which replaces socat. It is mainly used for public IPv6 tcp/udp to intranet ipv4, http/https reverse proxy frp, and the default login username and password are 666")..translate("</br>For specific usage, see:")..translate("<a href=\'https://github.com/sirpdboy/luci-app-lucky.git' target=\'_blank\'>GitHub @sirpdboy/luci-app-lucky </a>") )
+m = Map("lucky")
+m.title = translate("Lucky")
+m.description = translate("Main functions of Lucky: dynamic domain name ddns-go service, which replaces socat. It is mainly used for public IPv6 tcp/udp to intranet ipv4, http/https reverse proxy frp, and the default login username and password are 666")..translate("</br>For specific usage, see:")..translate("<a href=\'https://github.com/sirpdboy/luci-app-lucky.git' target=\'_blank\'>GitHub @sirpdboy/luci-app-lucky </a>") )
 
 m:section(SimpleSection).template  = "lucky_status"
 
@@ -19,7 +21,7 @@ o.default=16601
 
 local e=luci.http.formvalue("cbi.apply")
 if e then
-  io.popen("/etc/init.d/lucky start")
+  io.popen("/etc/init.d/lucky restart")
 end
 
 return m
