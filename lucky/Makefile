@@ -9,7 +9,7 @@ PKG_SOURCE_PROTO:=git
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/gdy666/lucky.git
 PKG_SOURCE_VERSION:=5e820e65551c686b822924702747472bca702b67
-PKG_MIRROR_HASH:=auto
+PKG_MIRROR_HASH:=
 
 PKG_LICENSE:=AGPL-3.0-only
 PKG_LICENSE_FILES:=LICENSE
@@ -19,7 +19,7 @@ PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-GO_PKG:=github.com/jeessy2/ddns-go/v4
+GO_PKG:=github.com/gdy666/lucky/v4
 GO_PKG_LDFLAGS:=-s -w
 GO_PKG_LDFLAGS_X:=m.version=$(PKG_VERSION)
 include $(INCLUDE_DIR)/package.mk
@@ -31,11 +31,13 @@ define Package/lucky
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle 
-  URL:=https://github.com/gdy666/lucky
+  URL:=https://github.com/gdy666/lucky.git
 endef
 
 define Package/lucky/description
-  lucky is DDNS-GO,SOCAT,FRPC
+  Main functions of Lucky: dynamic domain name ddns-go service, 
+  which replaces socat. It is mainly used for public IPv6 tcp/udp to intranet ipv4, 
+  http/https reverse proxy frp
 endef
 
 define Package/lucky/postinst
