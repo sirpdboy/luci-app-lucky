@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 #
-# Copyright (C) 2021-2022  sirpdboy  <herboy2008@gmail.com> https://github.com/sirpdboy/luci-app-lucky
+# Copyright (C) 2021-2022  sirpdboy  <herboy2008@gmail.com>
 # 
 # This is free software, licensed under the Apache License, Version 2.0 .
 #
@@ -12,13 +12,10 @@ PKG_NAME:=lucky
 PKG_VERSION:=1.4.10
 PKG_RELEASE:=$(AUTORELEASE)
 
-PKG_SOURCE_PROTO:=git
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION)_Linux_$(PKG_ARCH).tar.gz
 PKG_SOURCE_URL:=https://github.com/gdy666/lucky/releases/download/v$(PKG_VERSION)/
 PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)
-
-PKG_MAINTAINER:=herboy2008 <herboy2008@gmail.com>
 
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
