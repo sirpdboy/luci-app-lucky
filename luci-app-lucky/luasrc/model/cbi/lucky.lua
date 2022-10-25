@@ -19,9 +19,9 @@ o=s:option(Value, "port",translate("Set the Lucky access port"))
 o.datatype="uinteger"
 o.default=16601
 
-local e=luci.http.formvalue("cbi.apply")
-if e then
-  io.popen("/etc/init.d/lucky restart")
+m.apply_on_parse = true
+m.on_after_apply = function(self,map)
+	luci.sys.exec("/etc/init.d/lucky restart")
 end
 
 return m
