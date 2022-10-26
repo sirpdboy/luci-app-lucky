@@ -22,21 +22,22 @@ PKG_USE_MIPS16:=0
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/lucky
-  TITLE:=A Linux web GUI client of lucky
+define Package/$(PKG_NAME)
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
+
+  TITLE:=A Linux web GUI client of lucky
   DEPENDS:=
   PKGARCH:=all
-  URL:=https://github.com/gdy666/lucky.git
+  URL:=https://github.com/gdy666/lucky
 endef
 
-define Package/lucky/description
+define Package/$(PKG_NAME)/description
   Main functions of Lucky: dynamic domain name ddns-go service, socat,frp 
 endef
 
-define Package/lucky/postinst
+define Package/$(PKG_NAME)/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
 	[ -f /etc/uci-defaults/luci-lucky ] && /etc/uci-defaults/luci-lucky && rm -f /etc/uci-defaults/luci-lucky
@@ -49,7 +50,7 @@ endef
 define Build/Compile
 endef
 
-define Package/lucky/install
+define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin $(1)/etc/init.d $(1)/etc/uci-defaults $(1)/etc/lucky
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lucky $(1)/usr/bin/lucky
 	$(INSTALL_BIN) ./files/lucky.init $(1)/etc/init.d/lucky
