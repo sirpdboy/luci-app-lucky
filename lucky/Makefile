@@ -7,36 +7,23 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_ARCH:=$(ARCH)
 PKG_NAME:=lucky
 PKG_VERSION:=1.5.1
-PKG_RELEASE:=$(AUTORELEASE)
-
-PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION)_Linux_$(PKG_ARCH).tar.gz
-PKG_SOURCE_URL:=https://github.com/gdy666/lucky/releases/download/v$(PKG_VERSION)/
-PKG_HASH:=skip
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)
-
-PKG_BUILD_PARALLEL:=1
-PKG_USE_MIPS16:=0
+PKG_RELEASE:=3
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
-  SECTION:=net
-  CATEGORY:=Network
-  SUBMENU:=Web Servers/Proxies
-
-  TITLE:=A Linux web GUI client of lucky
-  DEPENDS:=
-  PKGARCH:=all
-  URL:=https://github.com/gdy666/lucky
+	SECTION:=net
+	CATEGORY:=Network
+	TITLE:=Lucky dynamic domain name ddns-go service, socat,frp  
+	DEPENDS:=@(i386||x86_64||arm||aarch64||mipsel||mips)
+	URL:=https://github.com/gdy666/lucky
 endef
 
 define Package/$(PKG_NAME)/description
   Main functions of Lucky: dynamic domain name ddns-go service, socat,frp 
 endef
-
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
@@ -44,17 +31,42 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 fi
 endef
 
-define Build/Configure
-endef
+ifeq ($(ARCH),i386)
+	LUCKY_DIR:=x86
+endif
+
+ifeq ($(ARCH),x86_64)
+	LUCKY_DIR:=amd64
+endif
+
+ifeq ($(ARCH),arm)
+	LUCKY_DIR:=armv7
+	ifeq ($(CONFIG_HAS_FPU),)
+		LUCKY_DIR:=arm
+	endif
+endif
+
+ifeq ($(ARCH),aarch64)
+	LUCKY_DIR:=armv7
+endif
+
+ifeq ($(ARCH),mips)
+	LUCKY_DIR:=mips
+endif
+
+ifeq ($(ARCH),mipsel)
+	LUCKY_DIR:=mipsle
+endif
 
 define Build/Compile
+	true
 endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin $(1)/etc/init.d $(1)/etc/uci-defaults $(1)/etc/lucky
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lucky/usr/bin $(1)/usr/bin
 	$(INSTALL_BIN) ./files/lucky.init $(1)/etc/init.d/lucky
 	$(INSTALL_BIN) ./files/luci-lucky.uci-default $(1)/etc/uci-defaults/luci-lucky
+	$(INSTALL_BIN) ./files/$(LUCKY_DIR)/lucky $(1)/usr/bin/lucky
 	$(INSTALL_DATA) ./files/lucky-default.conf $(1)/etc/lucky/lucky-default.conf
 
 endef
