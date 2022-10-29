@@ -10,7 +10,7 @@ function index()
 
 	entry({"admin",  "services", "lucky"}, alias("admin", "services", "lucky", "setting"),_("Lucky"), 57).dependent = true
 	entry({"admin",  "services", "lucky", "lucky"}, template("lucky"), _("Lucky"), 10).leaf = true
-	entry({"admin", "services", "lucky", "setting"}, cbi("lucky"), _("Setting"), 20).leaf=true
+	entry({"admin", "services", "lucky", "setting"}, cbi("lucky"), _("Base Setting"), 20).leaf=true
 	entry({"admin", "services", "lucky_status"}, call("act_status"))
 end
 
