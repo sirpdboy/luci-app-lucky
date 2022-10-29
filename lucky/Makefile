@@ -36,11 +36,11 @@ ifeq ($(ARCH),i386)
 endif
 
 ifeq ($(ARCH),x86_64)
-	LUCKY_DIR:=amd64
+	LUCKY_DIR:=x86
 endif
 
 ifeq ($(ARCH),arm)
-	LUCKY_DIR:=armv7
+	LUCKY_DIR:=arm
 	ifeq ($(CONFIG_HAS_FPU),)
 		LUCKY_DIR:=arm
 	endif
