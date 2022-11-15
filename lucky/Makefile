@@ -73,6 +73,7 @@ define Build/Prepare
 endef
 
 define Build/Configure
+
 endef
 
 define Build/Compile
@@ -83,7 +84,6 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lucky $(1)/usr/bin/lucky
 	$(INSTALL_BIN) ./files/lucky.init $(1)/etc/init.d/lucky
 	$(INSTALL_BIN) ./files/luci-lucky.uci-default $(1)/etc/uci-defaults/luci-lucky
-	$(INSTALL_DATA) ./files/lucky-default.conf $(1)/etc/lucky/lucky.conf
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))

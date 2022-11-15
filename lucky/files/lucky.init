@@ -27,7 +27,7 @@ lucky_prepare() {
 
 init_conf(){
 	[ -d $CONFDIR ] || mkdir -p $CONFDIR 2>/dev/null
-	[ -s ${CONF}/lucky-default.conf ]  && cp -r $CONFDIR/lucky-default.conf $CONF || return 1
+	# [ -s ${CONF}/lucky-default.conf ]  && cp -r $CONFDIR/lucky-default.conf $CONF || return 1
 }
 
 stop_service() {
