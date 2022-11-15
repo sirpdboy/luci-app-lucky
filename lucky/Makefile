@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lucky
-PKG_VERSION:=1.5.1
+PKG_VERSION:=1.6.1
 PKG_RELEASE:=3
 
 include $(INCLUDE_DIR)/package.mk
@@ -22,7 +22,7 @@ define Package/$(PKG_NAME)
 endef
 
 define Package/$(PKG_NAME)/description
-  Main functions of Lucky: dynamic domain name ddns-go service, socat,frp 
+  Main functions of Lucky: dynamic domain name ddns-go service, socat,reverse proxy ,wake on lan
 endef
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh
