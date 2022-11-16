@@ -12,10 +12,10 @@ PKG_VERSION:=1.6.1
 PKG_RELEASE:=2
 
 ifeq ($(ARCH),mipsel)
-	LUCKY_ARCH:=mipsle-softfloat
+	LUCKY_ARCH:=mipsle_softfloat
 endif
 ifeq ($(ARCH),mips)
-	LUCKY_ARCH:=mips-softfloat
+	LUCKY_ARCH:=mips_softfloat
 endif
 ifeq ($(ARCH),i386)
 	LUCKY_ARCH:=i386
