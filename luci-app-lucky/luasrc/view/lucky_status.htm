@@ -16,12 +16,12 @@ var luckyAdminURL = ""+ window.location.protocol + "//" + window.location.hostna
 			{
 				if (data.running)
 				{
-					tb.innerHTML = '<br/><em style=\"color:green\"><%:The Lucky service is running.%></em>';
-					tb.innerHTML +='<br/><br/>' + '<a href="' +luckyAdminURL+'"'+' target="_blank">'+luckyAdminURL+'</a> '
+					tb.innerHTML = '<em><b style=\"color:green\"><%:The Lucky service is running.%></b></em>';
+					tb.innerHTML +='<br/><br/>' + '<a><b href="' +luckyAdminURL+'"'+' target="_blank">'+luckyAdminURL+'</b></a> '
 				}
 				else
 				{
-					tb.innerHTML = '<br/><em style=\"color:red\"><%:The Lucky service is not running.%></em>';
+					tb.innerHTML = '<em><b style=\"color:red\"><%:The Lucky service is not running.%></b></em>';
 				}
 			}
 		}
