@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lucky
 PKG_VERSION:=1.6.1
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 ifeq ($(ARCH),mipsel)
 	LUCKY_ARCH:=mipsle_softfloat
@@ -72,15 +72,11 @@ define Build/Prepare
 	tar -xzvf $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz -C $(PKG_BUILD_DIR)
 endef
 
-define Build/Configure
-
-endef
-
 define Build/Compile
 endef
 
 define Package/$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/usr/bin $(1)/etc/init.d $(1)/etc/uci-defaults $(1)/etc/lucky
+	$(INSTALL_DIR) $(1)/usr/bin $(1)/etc/init.d $(1)/etc/uci-defaults
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lucky $(1)/usr/bin/lucky
 	$(INSTALL_BIN) ./files/lucky.init $(1)/etc/init.d/lucky
 	$(INSTALL_BIN) ./files/luci-lucky.uci-default $(1)/etc/uci-defaults/luci-lucky
