@@ -22,8 +22,7 @@
 
 
        var luckyAdminURL = ""+ window.location.protocol + "//" + window.location.hostname +":"+ `<%=luckyHttpPort%>`+`<%=safeURL%>`;
-        console.log(luckyAdminURL);
-        
+
          document.getElementById("lucky").src = luckyAdminURL
           		document.getElementById("lucky").height = document.documentElement.clientHeight;
         window.onresize = function(){

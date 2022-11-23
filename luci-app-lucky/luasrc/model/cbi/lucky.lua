@@ -19,9 +19,8 @@ o = s:option(Value, "port",translate("Set the Lucky access port"))
 o.datatype = "uinteger"
 o.default = 16601
 
-o = s:option(Value, "config", translate("Lucky configuration directory"))
-o.rmempty = '/etc/lucky'
-o.rmempty = false;
+o = s:option(Flag, "AllowInternetaccess", translate("Enable Internet access"))
+o.default=0
 
 m.apply_on_parse = true
 m.on_after_apply = function(self,map)
