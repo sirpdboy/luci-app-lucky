@@ -17,7 +17,10 @@ luci-app-lucky 动态域名ddns-go服务,替代socat主要用于公网IPv6 tcp/u
 ## 功能说明：
 
 ### Lucky(大吉)
+
 #### 动态域名ddns-go服务,替代socat主要用于公网IPv6 tcp/udp转内网ipv4,http/https反向代理
+
+#### 在LUCI中可以配置访问端口和增加是否允许外网访问设置。
 
 <!-- TOC -->
 
