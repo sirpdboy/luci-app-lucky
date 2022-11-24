@@ -36,3 +36,7 @@ msgstr "基本设置"
 
 msgid "Enable Internet access"
 msgstr "开启外网访问"
+
+msgid "Click the new page to open Lucky"
+msgstr "点击新页面打开大吉"
+
