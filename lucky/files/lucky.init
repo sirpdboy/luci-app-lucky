@@ -25,85 +25,44 @@ get_config() {
 	config_get AllowInternetaccess $1 AllowInternetaccess 0
 }
 
+set_firewall() {
+	if [ "$AllowInternetaccess" = "1" ]; then
+		uci -q delete firewall.lucky
+		uci set firewall.lucky=rule
+		uci set firewall.lucky.name="lucky"
+		uci set firewall.lucky.target="ACCEPT"
+		uci set firewall.lucky.src="wan"
+		uci set firewall.lucky.proto="tcp"
+		uci set firewall.lucky.dest_port="$port"
+		uci set firewall.lucky.enabled="1"
+		uci commit firewall
+		/etc/init.d/firewall reload >/dev/null 2>&1
+	else
+		uci -q delete firewall.lucky
+		uci commit firewall
+		/etc/init.d/firewall reload >/dev/null 2>&1
+	fi
+}
+
 start_service() {
 	stop_service
 	config_load "$CONF"
 	config_foreach get_config "$CONF"
 
 	[ -s ${LUCKYCONF} ] || {
-	[ -d "$LUCKYDIR" ] || mkdir -p "$LUCKYDIR" >/dev/null 2>&1
-	cat > $LUCKYCONF <<EOF
-{
-	"BaseConfigure": {
-		"AdminWebListenPort": $port,
-		"AdminWebListenTLS": false,
-		"AdminWebListenHttpsPort": 16626,
-		"AdminAccount": "666",
-		"AdminPassword": "666",
-		"AllowInternetaccess": false,
-		"LogMaxSize": 2048,
-		"HttpClientTimeout": 20,
-		"InsecureSkipVerify": false,
-		"DisableModules": null,
-		"SafeURL": ""
-	},
-	"WhiteListConfigure": {
-		"BaseConfigure": {
-			"URL": "",
-			"ActivelifeDuration": 36,
-			"BasicAccount": "666",
-			"BasicPassword": "666"
-		},
-		"WhiteList": null
-	},
-	"BlackListConfigure": {
-		"BlackList": null
-	},
-	"DDNSConfigure": {
-		"Enable": false,
-		"FirstCheckDelay": 0,
-		"Intervals": 0
-	},
-	"DDNSTaskList": null,
-	"ReverseProxyRuleList": null,
-	"SSLCertficateList": null,
-	"PortForwardsRuleList": null,
-	"PortForwardsConfigure": {
-		"PortForwardsLimit": 128,
-		"TCPPortforwardMaxConnections": 1024,
-		"UDPReadTargetDataMaxgoroutineCount": 1024
-	},
-	"WOLDeviceList": null,
-	"WOLServiceConfigure": {
-		"Server": {
-			"Enable": false,
-			"Token": "666666"
-		},
-		"Client": {
-			"Enable": false,
-			"ServerURL": "",
-			"Token": "",
-			"Relay": false,
-			"Key": "",
-			"DeviceName": "OpenWrt",
-			"Mac": "",
-			"BroadcastIP": "",
-			"Port": 9,
-			"Repeat": 5,
-			"PowerOffCMD": "poweroff",
-			"UpdateTime": 0
-		}
-	}
-}
-
+		[ -d "$LUCKYDIR" ] || mkdir -p "$LUCKYDIR" >/dev/null 2>&1
+		cat > $LUCKYCONF <<EOF
+{"BaseConfigure": {"AdminWebListenPort": $port,"AdminWebListenTLS": false,"AdminWebListenHttpsPort": 16626,"AdminAccount": "666","AdminPassword": "666","AllowInternetaccess": false,"LogMaxSize": 2048,"HttpClientTimeout": 20,"InsecureSkipVerify": false,"DisableModules": null,"SafeURL": ""},"WhiteListConfigure": {"BaseConfigure": {"URL": "","ActivelifeDuration": 36,"BasicAccount": "666","BasicPassword": "666"},"WhiteList": null},"BlackListConfigure": {"BlackList": null},"DDNSConfigure": {"Enable": false,"FirstCheckDelay": 0,"Intervals": 0},"DDNSTaskList": null,"ReverseProxyRuleList": null,"SSLCertficateList": null,"PortForwardsRuleList": null,"PortForwardsConfigure": {"PortForwardsLimit": 128,"TCPPortforwardMaxConnections": 1024,"UDPReadTargetDataMaxgoroutineCount": 1024},"WOLDeviceList": null,"WOLServiceConfigure": {"Server": {"Enable": false,"Token": "666666"	},"Client": {"Enable": false,"ServerURL": "","Token": "","Relay": false,"Key": "","DeviceName": "OpenWrt","Mac": "","BroadcastIP": "","Port": 9,"Repeat": 5,"PowerOffCMD": "poweroff","UpdateTime": 0}}}
 EOF
 	}
+
 	[ "x$enabled" = "x1" ] || return 1
 	if [ "x$AllowInternetaccess" = "x1" ] ;then
 		sed -i 's/"AllowInternetaccess": false,/"AllowInternetaccess": true,/g' "$LUCKYCONF"
 	else
 		sed -i 's/"AllowInternetaccess": true,/"AllowInternetaccess": false,/g' "$LUCKYCONF"
 	fi
+	set_firewall
 	procd_open_instance
 	procd_set_param command "$PROG"
 	procd_append_param command -c "$LUCKYCONF" -p $port
