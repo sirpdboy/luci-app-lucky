@@ -19,6 +19,9 @@ msgstr "大吉服务已启动"
 msgid "The Lucky service is not running."
 msgstr "大吉服务未启动"
 
+msgid "Please enable the Lucky service"
+msgstr "请将Lucky服务启用"
+
 msgid "Lucky Status"
 msgstr "大吉服务状态"
 
