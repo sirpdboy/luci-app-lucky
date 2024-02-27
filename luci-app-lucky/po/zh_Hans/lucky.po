@@ -7,6 +7,9 @@ msgstr "配置文件夹位置"
 msgid "Lucky"
 msgstr "Lucky大吉"
 
+msgid "Lucky Control panel"
+msgstr "Lucky操作台"
+
 msgid "ipv4/ipv6 portforward,ddns,reverseproxy proxy,wake on lan,IOT and more,Default username and password 666"
 msgstr "IPv4/IPv6端口转发,动态域名服务,http/https反向代理，默认用户名密码666.."
 
