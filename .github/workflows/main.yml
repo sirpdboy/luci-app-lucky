@@ -31,7 +31,6 @@ jobs:
           - arm_xscale
           - i386_pentium-mmx
           - i386_pentium4
-          - mips64_octeonplus
           - mips_24kc
           - mips_4kec
           - mips_mips32
@@ -65,7 +64,6 @@ jobs:
       - name: Create compress files
         run: |
           tar -zcvf ${{ matrix.sdk }}-${{ matrix.arch }}.tar.gz -C bin/packages/${{ matrix.arch }}/ packages_ci
-
  
       - name: Upload packages
         uses: ncipollo/release-action@v1
