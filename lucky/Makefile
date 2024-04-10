@@ -26,6 +26,10 @@ endif
 ifeq ($(ARCH),arm)
 	LUCKY_ARCH:=armv7
 endif
+
+ifeq ($(ARCH),arm64)
+	LUCKY_ARCH:=arm64
+endif
 ifeq ($(BOARD),bcm53xx)
 	LUCKY_ARCH:=armv7
 ifeq ($(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE)))),)
