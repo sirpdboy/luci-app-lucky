@@ -1,4 +1,4 @@
-/*   Copyright (C) 2021-2025 sirpdboy herboy2008@gmail.com https://github.com/sirpdboy/luci-app-ddns-go */
+/*   Copyright (C) 2021-2025 sirpdboy herboy2008@gmail.com https://github.com/sirpdboy/luci-app-lucky */
 
 'use strict';
 'require form';
@@ -19,7 +19,6 @@ async function checkProcess() {
             };
         }
     } catch (err) {
-        // pidof 失败，继续尝试 ps
     }
     try {
         const psRes = await fs.exec('/bin/ps', ['-C', 'lucky', '-o', 'pid=']);
