@@ -1,0 +1,57 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Lucky Configuration"
+msgstr "Lucky参数配置"
+
+msgid "Lucky"
+msgstr "Lucky大吉"
+
+msgid "Lucky Control panel"
+msgstr "Lucky操作台"
+
+msgid "ipv4/ipv6 portforward,ddns,reverseproxy proxy,wake on lan,IOT and more,Default username and password 666"
+msgstr "IPv4/IPv6端口转发,动态域名服务,http/https反向代理，默认用户名密码666.."
+
+msgid "Running state"
+msgstr "运行状态"
+
+msgid "Enable SSL"
+msgstr "开启SSL"
+
+msgid "Lucky Service Not Running"
+msgstr "大吉服务未启动"
+
+msgid "Lucky Status"
+msgstr "大吉服务状态"
+
+msgid "Collecting data..."
+msgstr "收集数据..."
+
+msgid "Set the Lucky access port"
+msgstr "设置访问端口"
+
+msgid "Base Setting"
+msgstr "基本设置"
+
+msgid "Safe entrance"
+msgstr "安全入口"
+
+msgid "Port must be between 1 and 65535"
+msgstr "端口范围1-65535之间"
+
+msgid "Open Web Interface"
+msgstr "打开WEB界面"
+
+msgid "RUNNING"
+msgstr "运行中"
+
+msgid "NOT RUNNING"
+msgstr "未运行"
+
+msgid "Delayed Start (seconds)"
+msgstr "开机延时启动（秒）"
+
+msgid ""
+msgstr ""
+
